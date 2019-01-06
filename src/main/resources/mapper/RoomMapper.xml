@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.supadmin.hotelafter.dao.RoomDao">
+    <sql id="TABLE_NAME">
+        room
+    </sql>
+    <select id="selectRoom" resultType="com.supadmin.hotelafter.entity.Room">
+        SELECT *FROM
+        <include refid="TABLE_NAME"/>
+        order by roomid
+    </select>
+    <update id="updateStat1" parameterType="java.lang.Integer">
+        update
+        <include refid="TABLE_NAME"/>
+        SET stat=1
+        where roomid = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateStat0" parameterType="java.lang.Integer">
+        update
+        <include refid="TABLE_NAME"/>
+        SET stat=0
+        WHERE roomid =#{id,jdbcType=INTEGER}
+    </update>
+    <select id="selectRoomLikeId" parameterType="java.lang.Integer" resultType="com.supadmin.hotelafter.entity.Room">
+        select *from
+        <include refid="TABLE_NAME"/>
+        where roomid like CONCAT(CONCAT('%',#{id,jdbcType=INTEGER},'%'))
+    </select>
+</mapper>

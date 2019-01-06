@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.supadmin.hotelafter.dao.HotelOrderDao">
+    <sql id="TABLE_NAME">
+        hotelorder
+    </sql>
+    <select id="selectHotelOrder" resultType="com.supadmin.hotelafter.entity.HotelOrder">
+        SELECT *FROM
+        <include refid="TABLE_NAME"/>
+    </select>
+    <select id="selectHotelOrderById" resultType="com.supadmin.hotelafter.entity.HotelOrder" parameterType="java.lang.Integer">
+        select * from
+        <include refid="TABLE_NAME"/>
+        where orderid= #{hotelOrderId,jdbcType=INTEGER}
+    </select>
+    <insert id="insertOrderByHotelOrder" parameterType="com.supadmin.hotelafter.entity.HotelOrder">
+        insert into
+        <include refid="TABLE_NAME"/>
+        (name,pid,price)
+        values (#{name,jdbcType=VARCHAR},#{pid,jdbcType=VARCHAR},#{price,jdbcType=VARCHAR})
+    </insert>
+</mapper>

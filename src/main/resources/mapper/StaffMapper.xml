@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.supadmin.hotelafter.dao.StaffDao">
+    <sql id="stafftable">
+        staff
+    </sql>
+    <select id="selectStaff" resultType="com.supadmin.hotelafter.entity.Staff">
+      select * from
+      <include refid="stafftable"/>
+    </select>
+    <update id="updateStaffStat">
+        update
+        <include refid="stafftable"/>
+        set stat = 0
+        where staffid = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateStaffPosition">
+        update
+        <include refid="stafftable"/>
+        set position = #{position,jdbcType=VARCHAR}
+        where staffid = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
