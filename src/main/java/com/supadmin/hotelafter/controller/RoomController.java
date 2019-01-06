@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
 
+
+/**
+ *
+ * room web controller
+ *
+ */
 @RestController
 @RequestMapping("/room")
 @CrossOrigin(origins = "*",maxAge = 3600)
